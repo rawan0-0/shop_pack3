@@ -1,0 +1,145 @@
+<html>
+    
+    <head>
+        <title>Website</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    <body>
+        <div> Products</div>
+<div> Services </div>
+<div> About Us </div>
+        <header class="header">
+            <nav class="navbar">
+                <a href="#" class="nav-logo">WebDev.</a>
+                <div class="container" onclick="myFunction(this)">
+                    <div class="Products"></div>
+                    <div class="Services"></div>
+                    <div class="About us"></div>
+                  </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    
+        <section class="user-stories-section">
+            <h2>User Stories</h2>
+            <div class="user-story">
+                <p>"I'm amazed with the features of this website. I find it helpful as it includes accessible features for blind people that enable them to hear the words as they use the website."</p>
+            </div>
+        </section>
+    
+        <section class="comment-section">
+            <h2>Comments</h2>
+            <div id="commentSection">
+                <!-- Comments will be dynamically added here -->
+            </div>
+            <div class="comment-input">
+                <input type="text" id="commentInput" placeholder="Enter your comment">
+                <button id="commentButton">Add Comment</button>
+            </div>
+        </section>
+    
+        <section class="shopping-cart-section">
+            <h2>Shopping Cart</h2>
+            <div id="cart">
+                <!-- Products in the cart will be dynamically added here -->
+            </div>
+        </section>
+    
+        <section class="product-section">
+            <h2>Click on Products to add</h2>
+            <div></div>
+<div></div>
+<div></div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link product-link" onclick="addToCart('Laptop')">Laptop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link product-link" onclick="addToCart('Mobile')">Mobile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link product-link" onclick="addToCart('Game')">Game</a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS14qnnHRR0KWRfuJHlorK-3HoiDzJSa4oITA&usqp=CAU" height="200" width="400" alt="Laptop">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqzPIKuz4L9fCTHu-dMR8pE4qUHDceTETGqg&usqp=CAU" height="200" width="400" alt="samsung mobile">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTihwHr6_cK3a9E-hfgyOvAygZ4hXOVtjMQFQ&usqp=CAU" height="200" width="400" alt="Nintendo game">
+        <section class="image-carousel-section">
+            
+            <h2>Image Carousel</h2>
+            <div id="imageCarousel">
+                <img src="<img src="image5.jpg" height="200" width="400" alt="this image contains a description">" alt="Image 1">
+                
+               
+            </div>
+            <div class="carousel-buttons">
+                <button id="previousButton">Previous</button>
+                <button id="nextButton">Next</button>
+            </div>
+        </section>
+    
+        <script src="script.js"></script>
+        <script>
+            function addToCart(product) {
+                var cart = document.getElementById('cart');
+                var cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerText = product;
+                cart.appendChild(cartItem);
+            }
+            
+            // Text-to-Speech Feature
+            function speakText() {
+                var textToSpeak = document.querySelector('body').innerText;
+                var speechSynthesis = window.speechSynthesis;
+                var speechUtterance = new SpeechSynthesisUtterance();
+                speechUtterance.text = textToSpeak;
+                speechSynthesis.speak(speechUtterance);
+            }
+            
+            // Event listener for the speak button
+            document.getElementById('speakButton').addEventListener('click', speakText);
+            
+            // Hamburger Menu
+            var navbar = document.querySelector('.navbar');
+            var hamburger = document.querySelector('.hamburger');
+    
+            hamburger.addEventListener('click', function () {
+                navbar.classList.toggle('active');
+            });
+            
+            // Product Menu
+            var productLinks = document.querySelectorAll('.product-link');
+    
+            for (var i = 0; i < productLinks.length; i++) {
+                productLinks[i].addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var product = this.innerText;
+                    addToCart(product);
+                });
+            }
+        </script>
+    </body>
+    </html>
+    
